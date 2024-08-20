@@ -31,11 +31,12 @@ class MethodChannelBluetoothClassic extends BluetoothClassicPlatform {
   Stream<dynamic>? _deviceDataReceivedStream;
 
   /// user facing stream controller for device discovery
-  final StreamController<Device> discoveryStream = StreamController();
+  final StreamController<Device> discoveryStream = StreamController.broadcast();
 
-  final StreamController<int> statusStream = StreamController();
+  final StreamController<int> statusStream = StreamController.broadcast();
 
-  final StreamController<Uint8List> dataReceivedStream = StreamController();
+  final StreamController<Uint8List> dataReceivedStream =
+      StreamController.broadcast();
 
   void _onDeviceDiscovered(Device device) {
     discoveryStream.add(device);
